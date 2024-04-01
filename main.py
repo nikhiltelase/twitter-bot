@@ -28,21 +28,19 @@ password_input.send_keys(Keys.ENTER)
 
 # getting news data
 r = requests.get(f"https://newsapi.org/v2/top-headlines?country=in&apiKey={news_api_key}")
-print(r.url)
 news_dict = r.json()
 articles = news_dict["articles"]
 
-n = articles[1]
-title = n.get('title')
-print(title)
-url = n.get('url')
-print(url)
+news = articles[1]
+title = news.get('title')
+url = news.get('url')
 
 # posting a post
 time.sleep(10)
 screenWidth, screenHeight = pyautogui.size()
 currentMouseX, currentMouseY = pyautogui.position()
 
+# write news title and url
 pyautogui.click(530, 323)
 pyautogui.keyDown('shift')
 pyautogui.write("braking news", interval=0.1)
@@ -54,7 +52,3 @@ pyautogui.write(url, interval=0.1)
 
 post_button = driver.find_element(By.XPATH, value='/html/body/div[1]/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div/div[3]/div[2]/div[1]/div/div/div/div[2]/div[2]/div/div/div/div[4]/div/span/span')
 post_button.click()
-
-
-
-gggg
